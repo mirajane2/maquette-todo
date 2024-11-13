@@ -1,0 +1,15 @@
+.container {
+    background: linear-gradient(180deg, #517FF6, #253663);
+    font: inherit;
+    width: 1197px;
+    height: 932px;
+}
+
+.content{
+    width: 1100px;
+    min-height: 709px;
+    background-color: #FFFFFF80;
+    border-radius: 30px;
+    margin: 100px auto;
+    padding: 50px;
+}

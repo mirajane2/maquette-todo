@@ -1,0 +1,28 @@
+{
+    "tasks" : [
+        {
+        "Task" : "se lever", 
+        "Description": "C'est l'heure de se lever",
+        "Category" : "Matin",
+        "When" : "12/11/2024",
+        "Priority": "High",
+        "Fulfillment" : "100%"
+        },
+        {
+        "Task" : "manger", 
+        "Description": "il faut prendre le petit déjeuner",
+        "Category" : "Matin",
+        "When" : "12/11/2024",
+        "Priority": "High",
+        "Fulfillment" : "100%"
+        },
+        {
+        "Task" : "travailller", 
+        "Description": "Il faut travailler pour gagner de l'argnet",
+        "Category" : "Journée",
+        "When" : "12/11/2024",
+        "Priority": "High",
+        "Fulfillment" : "50%"
+        }
+    ]
+}

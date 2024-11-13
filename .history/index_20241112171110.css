@@ -1,0 +1,25 @@
+.container {
+    background: linear-gradient(180deg, #517FF6, #253663);
+    width : 1440px;
+    height: 1024px;
+}
+
+.content {
+    position: absolute;
+    left: 117px;
+    top: 137px;
+    border-radius: 30px;
+    background-color: #ffffff;
+    width: 1200px;
+    height: 770px;
+}
+
+.titre {
+    color: #0c0c0c;
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+    font-family: Jost;
+    line-height: Auto;
+    letter-spacing: 0%;
+}

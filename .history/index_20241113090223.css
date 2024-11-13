@@ -1,0 +1,35 @@
+.container {
+    background: linear-gradient(180deg, #517FF6, #253663);
+    width : 1440px;
+    height: 1024px;
+}
+
+.content {
+    position: absolute;
+    left: 117px;
+    top: 137px;
+    border-radius: 30px;
+    opacity: 0.5;
+    background-color: #FFFFFF;
+    width: 1200px;
+    height: 770px;
+}
+
+.titre {
+    color: #000000;
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+    font-family: Jost;
+    opacity: 1;
+    position: relative;
+}
+
+.taches {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    width: 450px;
+    height: 60px;
+    padding : 13px 34px 12px 34px;
+    margin : 150px 700px 560px 50px;
+}

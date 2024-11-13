@@ -23,7 +23,7 @@ save.addEventListener('click', () => {
     const category = document.getElementById('category').value;
     const date = document.getElementById('taskDate').value;
     const time = document.getElementById('taskTime').value;
-    const priority = document.getElementById('taskPriority').value;
+    const priority = document.getElementById('taskpriority').value;
     const fulfillment = document.getElementById('taskFulfillment').value;
 
     if (name.trim() === '') {
@@ -44,7 +44,7 @@ save.addEventListener('click', () => {
             <button class="delete">Delete</button>
         </td>
     `;
-    table.appendChild(newRow);
+    taskTableBody.appendChild(newRow);
     
     formContainer.style.display = 'none';
     mainContainer.style.display = 'block';
@@ -61,7 +61,8 @@ function clearForm() {
     document.getElementById('taskFulfillment').value = '0';
 }
 
-table.addEventListener('click', (event) => {
+// Suppression d'une tâche
+taskTableBody.addEventListener('click', (event) => {
     if (event.target.classList.contains('delete')) {
         event.target.closest('tr').remove();
     }

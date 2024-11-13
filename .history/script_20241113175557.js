@@ -23,7 +23,7 @@ save.addEventListener('click', () => {
     const category = document.getElementById('category').value;
     const date = document.getElementById('taskDate').value;
     const time = document.getElementById('taskTime').value;
-    const priority = document.getElementById('taskPriority').value;
+    const priority = document.getElementById('taskpriority').value;
     const fulfillment = document.getElementById('taskFulfillment').value;
 
     if (name.trim() === '') {

@@ -57,7 +57,7 @@ save.addEventListener('click', () => {
         <th>${fulfillment}%</th>
         <th>
             <button class="edit">Edit</button>
-            <button class="delete"> <img src="poubelle.png"></button>
+            <button class="delete">Delete</button>
         </th>
     `;
     table.appendChild(newRow);
@@ -81,7 +81,7 @@ function clearForm() {
 
 table.addEventListener('click', (event) => {
     if (event.target.classList.contains('delete')) {
-        event.target.remove('tr')
+        event.target.closest('tr').remove();
     }
 });
 
@@ -126,7 +126,7 @@ async function fetchAndDisplayTasks() {
                 <th>${task.fulfillment}%</th>
                 <th>
                     <button class="edit">Edit</button>
-                    <button class="delete"><img src="poubelle.png"></button>
+                    <button class="delete">Delete</button>
                 </th>
             `;
             taskList.appendChild(newRow);
@@ -136,51 +136,45 @@ async function fetchAndDisplayTasks() {
     }
 }
 
+fetchAndDisplayTasks();
 
+document.getElementById('enregistrer').addEventListener('click', () => {
+    const newTask = {
+        name: document.getElementById('name').value,
+        description: document.getElementById('description').value,
+        category: document.getElementById('category').value,
+        date: document.getElementById('taskDate').value,
+        time: document.getElementById('taskTime').value,
+        priority: document.getElementById('taskPriority').value,
+        fulfillment: document.getElementById('taskFulfillment').value
+    };
 
-async function deleteTask(name) {
-    try{
-        const response = await fetch(`http://localhost:3000/tasks/${name}`, {method:"DELETE"});
-        if(response.ok) {
-            console.log("deleted successfully");
-        
+    fetch('http://localhost:3000/tasks', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newTask)
+    })
+    .then(() => {
+        fetchTasks();
+        closeForm();
+    })
+    .catch(error => console.error('Error adding task:', error));
+});
+taskList.addEventListener('click', async (event) => {
+    if (event.target.classList.contains('delete')) {
+        const row = event.target.closest('tr');
+
+        try {
+            await fetch(`http://localhost:3000/tasks/${id}`, {
+                method: 'DELETE'
+            });
+            await fetchAndDisplayTasks();
+        } catch (error) {
+            console.error('Error deleting task:', error);
+        }
     }
-}catch(error) {
-        console.error("err");
-    }
-}
+});
 
 
 
 
-
-
-
-
-
-
-
-
-
-// document.getElementById('enregistrer').addEventListener('click', () => {
-//     const newTask = {
-//         name: document.getElementById('name').value,
-//         description: document.getElementById('description').value,
-//         category: document.getElementById('category').value,
-//         date: document.getElementById('taskDate').value,
-//         time: document.getElementById('taskTime').value,
-//         priority: document.getElementById('taskPriority').value,
-//         fulfillment: document.getElementById('taskFulfillment').value
-//     };
-
-//     fetch('http://localhost:3000/tasks', {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify(newTask)
-//     })
-//     .then(() => {
-//         fetchTasks();
-//         closeForm();
-//     })
-//     .catch(error => console.error('Error adding task:', error));
-// });

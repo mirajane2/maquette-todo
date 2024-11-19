@@ -57,7 +57,7 @@ save.addEventListener('click', () => {
         <th>${fulfillment}%</th>
         <th>
             <button class="edit">Edit</button>
-            <button class="delete"> <img src="poubelle.png"></button>
+            <button class="delete">Delete</button>
         </th>
     `;
     table.appendChild(newRow);
@@ -81,7 +81,7 @@ function clearForm() {
 
 table.addEventListener('click', (event) => {
     if (event.target.classList.contains('delete')) {
-        event.target.remove('tr')
+        event.target.closest('tr').remove();
     }
 });
 
@@ -126,7 +126,7 @@ async function fetchAndDisplayTasks() {
                 <th>${task.fulfillment}%</th>
                 <th>
                     <button class="edit">Edit</button>
-                    <button class="delete"><img src="poubelle.png"></button>
+                    <button class="delete">Delete</button>
                 </th>
             `;
             taskList.appendChild(newRow);
@@ -136,51 +136,59 @@ async function fetchAndDisplayTasks() {
     }
 }
 
+fetchAndDisplayTasks();
 
+document.getElementById('enregistrer').addEventListener('click', () => {
+    const newTask = {
+        name: document.getElementById('name').value,
+        description: document.getElementById('description').value,
+        category: document.getElementById('category').value,
+        date: document.getElementById('taskDate').value,
+        time: document.getElementById('taskTime').value,
+        priority: document.getElementById('taskPriority').value,
+        fulfillment: document.getElementById('taskFulfillment').value
+    };
 
-async function deleteTask(name) {
-    try{
-        const response = await fetch(`http://localhost:3000/tasks/${name}`, {method:"DELETE"});
-        if(response.ok) {
-            console.log("deleted successfully");
-        
-    }
-}catch(error) {
-        console.error("err");
-    }
+    fetch('http://localhost:3000/tasks', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newTask)
+    })
+    .then(() => {
+        fetchTasks();
+        closeForm();
+    })
+    .catch(error => console.error('Error adding task:', error));
+});
+
+function deleteTask(id) {
+    fetch(`http://localhost:3000/tasks/${id}`, {
+        method: 'DELETE'
+    })
+    .then(() => fetchTasks())
+    .catch(error => console.error('Error deleting task:', error));
+}
+
+function editTask(id) {
+    const task = {
+        name: prompt('Enter new name:'),
+        description: prompt('Enter new description:'),
+        category: prompt('Enter new category:'),
+        date: prompt('Enter new date (YYYY-MM-DD):'),
+        time: prompt('Enter new time (HH:MM):'),
+        priority: prompt('Enter new priority (high, medium, low):'),
+        fulfillment: prompt('Enter new fulfillment percentage (0-100):')
+    };
+
+    fetch(`http://localhost:3000/tasks/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(task)
+    })
+    .then(() => fetchTasks())
+    .catch(error => console.error('Error updating task:', error));
 }
 
 
 
 
-
-
-
-
-
-
-
-
-
-// document.getElementById('enregistrer').addEventListener('click', () => {
-//     const newTask = {
-//         name: document.getElementById('name').value,
-//         description: document.getElementById('description').value,
-//         category: document.getElementById('category').value,
-//         date: document.getElementById('taskDate').value,
-//         time: document.getElementById('taskTime').value,
-//         priority: document.getElementById('taskPriority').value,
-//         fulfillment: document.getElementById('taskFulfillment').value
-//     };
-
-//     fetch('http://localhost:3000/tasks', {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify(newTask)
-//     })
-//     .then(() => {
-//         fetchTasks();
-//         closeForm();
-//     })
-//     .catch(error => console.error('Error adding task:', error));
-// });

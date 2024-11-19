@@ -1,7 +1,7 @@
 {
   "tasks": [
     {
-      "name": "lever",
+      "name": "se lever",
       "description": "C'est l'heure de se lever",
       "category": "Matin",
       "date": "12/11/2024",

@@ -57,7 +57,7 @@ save.addEventListener('click', () => {
         <th>${fulfillment}%</th>
         <th>
             <button class="edit">Edit</button>
-            <button class="delete"> <img src="poubelle.png"></button>
+            <button class="delete">Delete</button>
         </th>
     `;
     table.appendChild(newRow);
@@ -81,7 +81,12 @@ function clearForm() {
 
 table.addEventListener('click', (event) => {
     if (event.target.classList.contains('delete')) {
-        event.target.remove('tr')
+        const row = event.target.closest('tr')
+        const taskName = row.children[0].textContent ;
+
+       row = remove();
+
+       deleteTask(taskName);
     }
 });
 
@@ -126,7 +131,7 @@ async function fetchAndDisplayTasks() {
                 <th>${task.fulfillment}%</th>
                 <th>
                     <button class="edit">Edit</button>
-                    <button class="delete"><img src="poubelle.png"></button>
+                    <button class="delete">Delete</button>
                 </th>
             `;
             taskList.appendChild(newRow);
@@ -136,51 +141,46 @@ async function fetchAndDisplayTasks() {
     }
 }
 
+fetchAndDisplayTasks();
 
+document.getElementById('enregistrer').addEventListener('click', () => {
+    const newTask = {
+        name: document.getElementById('name').value,
+        description: document.getElementById('description').value,
+        category: document.getElementById('category').value,
+        date: document.getElementById('taskDate').value,
+        time: document.getElementById('taskTime').value,
+        priority: document.getElementById('taskPriority').value,
+        fulfillment: document.getElementById('taskFulfillment').value
+    };
 
-async function deleteTask(name) {
-    try{
-        const response = await fetch(`http://localhost:3000/tasks/${name}`, {method:"DELETE"});
-        if(response.ok) {
-            console.log("deleted successfully");
-        
-    }
-}catch(error) {
-        console.error("err");
+    fetch('http://localhost:3000/tasks', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newTask)
+    })
+    .then(() => {
+        fetchTasks();
+        closeForm();
+    })
+    .catch(error => console.error('Error adding task:', error));
+});
+async function deleteTask(taskName) {
+    try {
+        const response = await fetch(`http://localhost:3000/tasks/${taskName}`, {
+            method: 'DELETE',
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to delete the task');
+        }
+
+        // Optionnel : afficher un message de succès ou mettre à jour la liste
+        console.log(`Task "${taskName}" deleted successfully.`);
+    } catch (error) {
+        console.error('Error deleting task:', error);
     }
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-// document.getElementById('enregistrer').addEventListener('click', () => {
-//     const newTask = {
-//         name: document.getElementById('name').value,
-//         description: document.getElementById('description').value,
-//         category: document.getElementById('category').value,
-//         date: document.getElementById('taskDate').value,
-//         time: document.getElementById('taskTime').value,
-//         priority: document.getElementById('taskPriority').value,
-//         fulfillment: document.getElementById('taskFulfillment').value
-//     };
-
-//     fetch('http://localhost:3000/tasks', {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify(newTask)
-//     })
-//     .then(() => {
-//         fetchTasks();
-//         closeForm();
-//     })
-//     .catch(error => console.error('Error adding task:', error));
-// });

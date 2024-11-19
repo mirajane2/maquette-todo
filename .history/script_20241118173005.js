@@ -136,19 +136,7 @@ async function fetchAndDisplayTasks() {
     }
 }
 
-
-
-async function deleteTask(name) {
-    try{
-        const response = await fetch(`http://localhost:3000/tasks/${name}`, {method:"DELETE"});
-        if(response.ok) {
-            console.log("deleted successfully");
-        
-    }
-}catch(error) {
-        console.error("err");
-    }
-}
+fetchAndDisplayTasks();
 
 
 
@@ -162,25 +150,27 @@ async function deleteTask(name) {
 
 
 
-// document.getElementById('enregistrer').addEventListener('click', () => {
-//     const newTask = {
-//         name: document.getElementById('name').value,
-//         description: document.getElementById('description').value,
-//         category: document.getElementById('category').value,
-//         date: document.getElementById('taskDate').value,
-//         time: document.getElementById('taskTime').value,
-//         priority: document.getElementById('taskPriority').value,
-//         fulfillment: document.getElementById('taskFulfillment').value
-//     };
 
-//     fetch('http://localhost:3000/tasks', {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify(newTask)
-//     })
-//     .then(() => {
-//         fetchTasks();
-//         closeForm();
-//     })
-//     .catch(error => console.error('Error adding task:', error));
-// });
+
+document.getElementById('enregistrer').addEventListener('click', () => {
+    const newTask = {
+        name: document.getElementById('name').value,
+        description: document.getElementById('description').value,
+        category: document.getElementById('category').value,
+        date: document.getElementById('taskDate').value,
+        time: document.getElementById('taskTime').value,
+        priority: document.getElementById('taskPriority').value,
+        fulfillment: document.getElementById('taskFulfillment').value
+    };
+
+    fetch('http://localhost:3000/tasks', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newTask)
+    })
+    .then(() => {
+        fetchTasks();
+        closeForm();
+    })
+    .catch(error => console.error('Error adding task:', error));
+});

@@ -69,11 +69,24 @@ body{
 
 .table{
     background-color: #FFFFFF;
-    width: 1200px;
+    width: 1100px;
     height: 460px;
     border-radius: 20px;
     border: none;
     font-size: 24px;
+}
+
+footer{
+    font-size: 16px;
+    margin: 29px 340px;
+    font-weight: 400px;
+    color: #FFFFFF;
+
+}
+
+thead{
+    text-align: center;
+    
 }
 .form{
     background-color: #FFFFFF;
@@ -85,7 +98,6 @@ body{
     left: 0;
     right: 0;
     width: 1100px;
-    height: 529px;
 }
 
 h2 {
@@ -105,7 +117,7 @@ h2 {
 .data-colonne{ 
     flex-direction: column;
     justify-content: space-between;
-
+    display: flex;
 }
 
 .champs{
@@ -115,24 +127,11 @@ h2 {
     display: flex;
 }
 
-#taskPriority{
-    margin-bottom: 30px;
-}
-
-.champs1{
-    flex-direction: row;
-    justify-content: space-between;
-    display: flex;
-}
-
 .form input, .form select, .form textarea{
     width: 330px;
     border-radius: 0;
     padding: 5px;
     font-size: 1rem;
-}
-.form textarea{
-    height : 90px
 }
 
 .form label {
@@ -142,8 +141,8 @@ h2 {
 .button {
     grid-template-columns: 1fr 1fr;
     column-gap: 50px;
+    margin-bottom: 30px;
     display: grid;   
-    margin-top: 210px;
 }
 
 #enregistrer{
@@ -151,18 +150,11 @@ h2 {
     background-color: #517FF6;
     width: 215px;
     height: 60px;
-    margin-bottom: 30px;
 }
 
 #supprimer{
     border-radius: 20px;;
     width: 215px;
     height: 60px;
-}
-footer{
-    font-size: 16px;
-    margin: 29px 340px;
-    font-weight: 400px;
-    color: #FFFFFF;
 }
 

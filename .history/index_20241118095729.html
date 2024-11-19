@@ -28,7 +28,7 @@
                             <th>When</th>
                             <th>Priority</th>
                             <th>Fulfillment</th>
-                            <th></th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody class="valeur" id="taskList">
@@ -36,15 +36,18 @@
                     </tbody>
                 </table>
             </div>
-        </div>        
+        </div>
+        <footer>
+            <p>Patryk Kielian © 2023 all rights reserved</p>
+        </footer>
     </div>
 
 
-    <div class="form-container" style="display: none">
+    <div class="form-container" style="display: none;">
         <div class ="modal-content">
-            <div class="content">
+            <form class="content">
                 <h1 class="titre">React To-Do List</h1>
-                <div class="form">
+                <form>
                     <h2 class="titre1"> Add a new todo : </h2>
                     <div class="data">
                         <div class="data-colonne">
@@ -75,7 +78,7 @@
 
                         </div>
                         <div class="data-colonne">
-                            <div class="champs1">
+                            <div class="champs">
                                 <label> Priority :</label>
                                 <select name="priority" id="taskPriority">
                                     <option value="high">High</option>
@@ -84,7 +87,7 @@
                                 </select>
                             </div>
                             
-                            <div class="champs1">
+                            <div class="champs">
                                 <label> Fulfillment :</label>
                                 <input type="range" id="taskFulfillment" min="0" max="100">
                             </div>
@@ -97,12 +100,12 @@
                         </div>
                         <script src="script.js"></script>
                     </div>             
-                </div>      
+                </form>     
             </div>
+            <footer>
+                <p>Patryk Kielian © 2023 all rights reserved</p>
+            </footer>
         </div>
     </div>
-    <footer>
-        <p>Patryk Kielian © 2023 all rights reserved</p>
-    </footer>
 </body>
 </html>

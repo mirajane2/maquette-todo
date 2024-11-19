@@ -140,13 +140,15 @@ async function fetchAndDisplayTasks() {
 
 async function deleteTask(name) {
     try{
-        const response = await fetch(`http://localhost:3000/tasks/${name}`, {method:"DELETE"});
-        if(response.ok) {
-            console.log("deleted successfully");
-        
+        const response = await fetch('http://localhost:3000/tasks/${name}', {method:"DELETE"});
+        if(!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const del = await response.json();
+        console.log("deleted successfully");
     }
-}catch(error) {
-        console.error("err");
+    catch(error) {
+
     }
 }
 

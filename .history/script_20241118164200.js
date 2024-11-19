@@ -49,16 +49,16 @@ save.addEventListener('click', () => {
     else {
         const newRow = document.createElement('tr');
         newRow.innerHTML = `
-        <th>${name}</th>
-        <th>${description}</th>
-        <th>${category}</th>
-        <th>${date} ${time}</th>
-        <th>${priority}</th>
-        <th>${fulfillment}%</th>
-        <th>
+        <td>${name}</td>
+        <td>${description}</td>
+        <td>${category}</td>
+        <td>${date} ${time}</td>
+        <td>${priority}</td>
+        <td>${fulfillment}%</td>
+        <td>
             <button class="edit">Edit</button>
-            <button class="delete"> <img src="poubelle.png"></button>
-        </th>
+            <button class="delete">delete</button>
+        </td>
     `;
     table.appendChild(newRow);
     }
@@ -81,7 +81,7 @@ function clearForm() {
 
 table.addEventListener('click', (event) => {
     if (event.target.classList.contains('delete')) {
-        event.target.remove('tr')
+        event.target.closest('tr').remove();
     }
 });
 
@@ -118,16 +118,16 @@ async function fetchAndDisplayTasks() {
         tasks.forEach(task => {
             const newRow = document.createElement('tr');
             newRow.innerHTML = `
-                <th>${task.name}</th>
-                <th>${task.description}</th>
-                <th>${task.category}</th>
-                <th>${task.date} ${task.time}</th>
-                <th>${task.priority}</th>
-                <th>${task.fulfillment}%</th>
-                <th>
-                    <button class="edit">Edit</button>
-                    <button class="delete"><img src="poubelle.png"></button>
-                </th>
+                <td>${task.name}</td>
+                <td>${task.description}</td>
+                <td>${task.category}</td>
+                <td>${task.date} ${task.time}</td>
+                <td>${task.priority}</td>
+                <td>${task.fulfillment}%</td>
+                <td>
+                    <button class="edit">edit</button>
+                    <button class="delete">delete</button>
+                </td>
             `;
             taskList.appendChild(newRow);
         });
@@ -136,51 +136,9 @@ async function fetchAndDisplayTasks() {
     }
 }
 
-
-
-async function deleteTask(name) {
-    try{
-        const response = await fetch(`http://localhost:3000/tasks/${name}`, {method:"DELETE"});
-        if(response.ok) {
-            console.log("deleted successfully");
-        
-    }
-}catch(error) {
-        console.error("err");
-    }
-}
+fetchAndDisplayTasks();
 
 
 
 
 
-
-
-
-
-
-
-
-
-// document.getElementById('enregistrer').addEventListener('click', () => {
-//     const newTask = {
-//         name: document.getElementById('name').value,
-//         description: document.getElementById('description').value,
-//         category: document.getElementById('category').value,
-//         date: document.getElementById('taskDate').value,
-//         time: document.getElementById('taskTime').value,
-//         priority: document.getElementById('taskPriority').value,
-//         fulfillment: document.getElementById('taskFulfillment').value
-//     };
-
-//     fetch('http://localhost:3000/tasks', {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify(newTask)
-//     })
-//     .then(() => {
-//         fetchTasks();
-//         closeForm();
-//     })
-//     .catch(error => console.error('Error adding task:', error));
-// });

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Maquette Figma</title>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1 class="titre">React To-Do List</h1>
+            <div class="control">
+                <button class="taches" id="formulaire"> Add a new to-do</button>
+                <div class="choix_selection">
+                    <button class="show">All</button>
+                    <button class="options">To-do</button>
+                    <button class="options">Completed</button>
+                </div>
+            </div>
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Task</th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>When</th>
+                            <th>Priority</th>
+                            <th>Fulfillment</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="valeur" id="taskList">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <footer>
+            <p>Patryk Kielian © 2023 all rights reserved</p>
+        </footer>
+    </div>
+
+
+    <div class="form-container" style="display: none;">
+        <div class ="modal-content">
+            <div class="content">
+                <h1 class="titre">React To-Do List</h1>
+                <div class="form">
+                    <h2 class="titre1"> Add a new todo : </h2>
+                    <div class="data">
+                        <label> Name :</label>
+                        <input type="text" id="name" placeholder="name for the task you're going to do">
+
+                        <label> Description :</label>
+                        <textarea id="description" placeholder="a short description of the task, can be omitted"></textarea>
+
+                        <label> Category :</label>
+                        <input type="text" id="category" placeholder="e.g housewold, school, work">
+
+                        <label> Date :</label>
+                        <input type="date" id="taskDate">
+
+                        <label> Time :</label>
+                        <input type="time" id="taskTime">
+
+                        <label> Priority :</label>
+                        <select name="priority" id="taskPriority">
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+
+                        <label> Fulfillment :</label>
+                        <input type="range" id="taskFulfillment" min="0" max="100">
+
+                        <button id="enregistrer">Save</button>
+                        <button id="supprimer">Cancel</button>
+
+                        <script src="script.js"></script>
+                    </div>             
+                </div>      
+            </div>
+        </div>
+    </div>
+</body>
+</html>

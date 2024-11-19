@@ -140,13 +140,13 @@ async function fetchAndDisplayTasks() {
 
 async function deleteTask(name) {
     try{
-        const response = await fetch(`http://localhost:3000/tasks/${name}`, {method:"DELETE"});
+        const response = await fetch('http://localhost:3000/tasks/${name}', {method:"DELETE"});
         if(response.ok) {
             console.log("deleted successfully");
         
     }
 }catch(error) {
-        console.error("err");
+        console.error
     }
 }
 

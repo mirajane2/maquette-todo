@@ -4,7 +4,6 @@ const main = document.querySelector('.container');
 const save = document.getElementById('enregistrer');
 const suppr = document.getElementById('supprimer');
 const table = document.querySelector('.valeur');
-const taskList = document.getElementById('taskList');
 
 let edition = false;  
 let editingRow = null;
@@ -13,7 +12,6 @@ let editingRow = null;
 form.addEventListener('click', () => {
     main.style.display = 'none';
     formContainer.style.display = 'flex';
-    edition = false;
 });
 
 suppr.addEventListener('click', () => {
@@ -35,7 +33,7 @@ save.addEventListener('click', () => {
         alert('Please enter a task name.');
         return;
     }
-    if (edition && editingRow) {
+    if (isEditing && editingRow) {
 
         editingRow.cells[0].textContent = name;
         editingRow.cells[1].textContent = description;
@@ -57,7 +55,7 @@ save.addEventListener('click', () => {
         <th>${fulfillment}%</th>
         <th>
             <button class="edit">Edit</button>
-            <button class="delete"> <img src="poubelle.png"></button>
+            <button class="delete">Delete</button>
         </th>
     `;
     table.appendChild(newRow);
@@ -81,9 +79,8 @@ function clearForm() {
 
 table.addEventListener('click', (event) => {
     if (event.target.classList.contains('delete')) {
-        event.target.remove('tr')
+        event.target.closest('tr').remove();
     }
-});
 
 table.addEventListener('click', (event) => {
     if(event.target.classList.contains('edit')) {
@@ -99,88 +96,10 @@ table.addEventListener('click', (event) => {
 
         edition = true;  
         editingRow = row;
-
-        main.style.display = 'none';
-        formContainer.style.display = 'flex';
     }
-    
 })
-async function fetchAndDisplayTasks() {
-    try {
-        const response = await fetch('http://localhost:3000/tasks');
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const tasks = await response.json();
-
-        taskList.innerHTML = '';
-
-        tasks.forEach(task => {
-            const newRow = document.createElement('tr');
-            newRow.innerHTML = `
-                <th>${task.name}</th>
-                <th>${task.description}</th>
-                <th>${task.category}</th>
-                <th>${task.date} ${task.time}</th>
-                <th>${task.priority}</th>
-                <th>${task.fulfillment}%</th>
-                <th>
-                    <button class="edit">Edit</button>
-                    <button class="delete"><img src="poubelle.png"></button>
-                </th>
-            `;
-            taskList.appendChild(newRow);
-        });
-    } catch (error) {
-        console.error('Error fetching tasks:', error);
-    }
-}
+    
+});
 
 
 
-async function deleteTask(name) {
-    try{
-        const response = await fetch(`http://localhost:3000/tasks/${name}`, {method:"DELETE"});
-        if(response.ok) {
-            console.log("deleted successfully");
-        
-    }
-}catch(error) {
-        console.error("err");
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-// document.getElementById('enregistrer').addEventListener('click', () => {
-//     const newTask = {
-//         name: document.getElementById('name').value,
-//         description: document.getElementById('description').value,
-//         category: document.getElementById('category').value,
-//         date: document.getElementById('taskDate').value,
-//         time: document.getElementById('taskTime').value,
-//         priority: document.getElementById('taskPriority').value,
-//         fulfillment: document.getElementById('taskFulfillment').value
-//     };
-
-//     fetch('http://localhost:3000/tasks', {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify(newTask)
-//     })
-//     .then(() => {
-//         fetchTasks();
-//         closeForm();
-//     })
-//     .catch(error => console.error('Error adding task:', error));
-// });

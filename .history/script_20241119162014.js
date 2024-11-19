@@ -113,7 +113,7 @@ async function fetchAndDisplayTasks() {
                 <td>${task.fulfillment}%</td>
                 <td>
                     <button><img src="edit.png" class="edit"></button>
-                    <button><img src="delete_forever_FILL0_wght400_GRAD0_opsz48 1.png" class="delete"></button>
+                    <button><img src="poubelle.png" class="delete"></button>
                 </td>
             `;
             taskList.appendChild(newRow);

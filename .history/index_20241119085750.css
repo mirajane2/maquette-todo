@@ -76,11 +76,13 @@ body{
     font-size: 24px;
     
 }
-th{
-    padding: 50px 50px 0px 30px;   
+tr{
+    text-align: center;
 }
-td {
-    padding-left: 30px;
+
+th{
+    padding: 30px;
+    
 }
 .form{
     background-color: #FFFFFF;
@@ -173,8 +175,4 @@ footer{
     font-weight: 400px;
     color: #FFFFFF;
 }
-button {
-    border: none;
-}
-
 

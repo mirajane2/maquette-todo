@@ -79,8 +79,9 @@ body{
 th{
     padding: 50px 50px 0px 30px;   
 }
-td {
-    padding-left: 30px;
+
+tbody {
+    text-align: center;
 }
 .form{
     background-color: #FFFFFF;
@@ -173,8 +174,4 @@ footer{
     font-weight: 400px;
     color: #FFFFFF;
 }
-button {
-    border: none;
-}
-
 

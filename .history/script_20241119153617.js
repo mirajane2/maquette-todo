@@ -112,8 +112,8 @@ async function fetchAndDisplayTasks() {
                 <td>${task.priority}</td>
                 <td>${task.fulfillment}%</td>
                 <td>
-                    <button><img src="edit.png" class="edit"></button>
-                    <button><img src="delete_forever_FILL0_wght400_GRAD0_opsz48 1.png" class="delete"></button>
+                    <button class="edit">Edit</button>
+                    <button class="delete">delete</button>
                 </td>
             `;
             taskList.appendChild(newRow);
@@ -124,7 +124,7 @@ async function fetchAndDisplayTasks() {
 }
 async function deleteTask(taskId) {
     try {
-        const response = await fetch(`http://localhost:3000/tasks/${taskId}`, {method: 'DELETE'});
+        const response = await fetch(`http://localhost:3000/tasks/${taskId}`);
         if(response.ok) {
             console.log('tache supprimé avec succes')
             fetchAndDisplayTasks();

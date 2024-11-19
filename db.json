@@ -1,31 +1,3 @@
 {
-  "tasks": [
-    {
-      "name": "lever",
-      "description": "C'est l'heure de se lever",
-      "category": "Matin",
-      "date": "12/11/2024",
-      "time": "15:00",
-      "priority": "High",
-      "fulfillment": "100"
-    },
-    {
-      "name": "manger",
-      "description": "il faut prendre le petit déjeuner",
-      "category": "Matin",
-      "date": "12/11/2024",
-      "time": "15:00",
-      "priority": "High",
-      "fulfillment": "100"
-    },
-    {
-      "name": "travailller",
-      "description": "Il faut travailler pour gagner de l'argnet",
-      "category": "Journée",
-      "date": "12/11/2024",
-      "time": "15:00",
-      "priority": "High",
-      "fulfillment": "50"
-    }
-  ]
+  "tasks": []
 }

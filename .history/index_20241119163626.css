@@ -152,6 +152,7 @@ h2 {
     column-gap: 50px;
     display: grid;   
     margin-top: 210px;
+    border: none;
 }
 
 #enregistrer{
@@ -173,8 +174,4 @@ footer{
     font-weight: 400px;
     color: #FFFFFF;
 }
-button {
-    border: none;
-}
-
 
